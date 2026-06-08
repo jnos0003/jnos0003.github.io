@@ -6,11 +6,11 @@
     <title>Julian Nosiara | Projects</title>
     <style>
         :root {
-            --bg-body: #1a1a1a;       /* Deep charcoal background */
-            --bg-nav: #111111;        /* Pitch black navigation bar */
-            --bg-card: #181818;       /* Matte black project cards */
-            --bg-tag: #262626;        /* Dark gray tag bubbles */
-            --accent-green: #22c55e;  /* Vibrant neon green from image_c24807.png */
+            --bg-body: #1a1a1a;       
+            --bg-nav: #111111;        
+            --bg-card: #181818;       
+            --bg-tag: #262626;        
+            --accent-green: #22c55e;  /* Neon green from image_c24807.png */
             --text-white: #ffffff;
             --text-muted: #aaaaaa;
         }
@@ -110,9 +110,9 @@
             border-radius: 10px;
         }
 
-        /* Projects Container */
+        /* Widened Projects Container */
         .projects-container {
-            max-width: 1100px;
+            max-width: 1350px; /* Increased width for a wider panel layout */
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
@@ -128,6 +128,7 @@
             display: flex;
             border: 1px solid #222;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
         }
 
         /* Alternate image-text alignment dynamically */
@@ -135,16 +136,17 @@
             flex-direction: row-reverse;
         }
 
+        /* Adjusted width ratios for the wider panel display */
         .project-text-side {
-            width: 42%;
-            padding: 2.5rem;
+            width: 38%;
+            padding: 3rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .project-image-side {
-            width: 58%;
+            width: 62%;
             position: relative;
             background-color: #0b0b0b;
             overflow: hidden;
@@ -228,6 +230,7 @@
             }
             .project-text-side, .project-image-side {
                 width: 100%;
+                padding: 2rem;
             }
             .project-image-side {
                 height: 250px;
@@ -240,7 +243,6 @@
     <!-- Top Navigation Bar mapped directly to image_c24807.png -->
     <nav>
         <div class="nav-profile">
-            <!-- Replace profile.jpg with your headshot file name -->
             <img src="profile.jpg" alt="Julian Nosiara" class="profile-img">
             <span class="profile-name">Julian Nosiara</span>[cite: 1]
         </div>
@@ -277,7 +279,7 @@
             </div>
         </div>
 
-        <!-- Project Block 2: Qantas Crew Seat Bogie (Layout Reversed Automatically) -->
+        <!-- Project Block 2: Qantas Crew Seat Bogie -->
         <div class="project-card">
             <div class="project-text-side">
                 <h2 class="project-title">Crew Seat Bogie Engineering</h2>
@@ -294,24 +296,24 @@
             </div>
         </div>
 
-        <!-- Project Block 3: Autonomous Surface Vehicle -->
+        <!-- Project Block 3: Autonomous Surface Vehicle (Systems & Navigation Focus) -->
         <div class="project-card">
             <div class="project-text-side">
-                <h2 class="project-title">Autonomous Surface Vehicle</h2>
-                <p class="project-description">Collaborated within a multidisciplinary engineering team to design, manufacture, and test an autonomous ocean research vessel. Created a composite rigid sail system actuated by automated gearing and monitored via closed-loop nodes running on a Cube flight controller mapping Mission Planner paths.</p>[cite: 1]
+                <h2 class="project-title">Autonomous ASV - Navigation & Guidance</h2>
+                <p class="project-description">Collaborated within a multidisciplinary engineering team to design an autonomous ocean surface vehicle for marine research. Developed a composite rigid sail system actuated by automated gearing and monitored via closed-loop nodes running on a Cube flight controller mapping Mission Planner paths.</p>[cite: 1]
                 <div class="project-tags">
                     <span class="tag">Cube Controller</span>[cite: 1]
                     <span class="tag">Mission Planner</span>[cite: 1]
-                    <span class="tag">Composites</span>
+                    <span class="tag">Closed-Loop Control</span>[cite: 1]
                 </div>
                 <a href="#contact" class="btn-check-it">Check it ↗</a>
             </div>
             <div class="project-image-side">
-                <img src="surface-vehicle.jpg" alt="Autonomous Marine Research Surface Craft">
+                <img src="surface-vehicle.jpg" alt="Autonomous Marine Research Surface Craft Systems">
             </div>
         </div>
 
-        <!-- Project Block 4: Qantas Ergonomic Tooling (Layout Reversed Automatically) -->
+        <!-- Project Block 4: Qantas Ergonomic Tooling -->
         <div class="project-card">
             <div class="project-text-side">
                 <h2 class="project-title">Ergonomic Safety Tooling</h2>
@@ -345,20 +347,20 @@
             </div>
         </div>
 
-        <!-- Project Block 6: Hydrodynamics CFD (Layout Reversed Automatically) -->
+        <!-- Project Block 6: Autonomous ASV (Manufacturing & Testing Focus - Replaces Sail CFD) -->
         <div class="project-card">
             <div class="project-text-side">
-                <h2 class="project-title">Vessel Computational Fluid Dynamics</h2>
-                <p class="project-description">Conducted comprehensive fluid mechanics analyses across the complex sail geometry, hull contours, and keel tracking setups of a research craft. Validated specific component scaling arrays to establish systemic structural balance ahead of open water environments.</p>[cite: 1]
+                <h2 class="project-title">Autonomous ASV - Vehicle Integration</h2>
+                <p class="project-description">Worked in a multidisciplinary team of four to manage the complete mechanical layout, structural component assembly, and physical manufacturing of an Autonomous Surface Vehicle (ASV), optimizing the design for deployment in field validation and marine environment testing.</p>[cite: 1]
                 <div class="project-tags">
-                    <span class="tag">ANSYS Fluent</span>[cite: 1]
-                    <span class="tag">CFD Analysis</span>[cite: 1]
-                    <span class="tag">Fluid Dynamics</span>[cite: 1]
+                    <span class="tag">Vehicle Design</span>[cite: 1]
+                    <span class="tag">Manufacturing</span>[cite: 1]
+                    <span class="tag">Marine Research Platform</span>[cite: 1]
                 </div>
                 <a href="#contact" class="btn-check-it">Check it ↗</a>
             </div>
             <div class="project-image-side">
-                <img src="fluid-analysis.jpg" alt="Computational Fluid Dynamics Hull Simulation Renders">
+                <img src="asv-build.jpg" alt="Autonomous Surface Vehicle Manufacturing and Deployment Testing">
             </div>
         </div>
 
