@@ -3,366 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julian Nosiara | Projects</title>
+    <title>Julian Nosiara | Portfolio</title>
     <style>
         :root {
-            --bg-body: #1a1a1a;       
-            --bg-nav: #111111;        
-            --bg-card: #181818;       
-            --bg-tag: #262626;        
-            --accent-green: #22c55e;  /* Neon green from image_c24807.png */
-            --text-white: #ffffff;
-            --text-muted: #aaaaaa;
+            --bg-main: #0f172a;       /* Deep Slate Blue-Dark */
+            --bg-card: #1e293b;       /* Muted Card Slate */
+            --accent: #38bdf8;        /* Electric Sky Blue */
+            --text-main: #f8fafc;     /* Crisp White/Gray */
+            --text-muted: #94a3b8;    /* Soft Muted Gray */
+            --border-color: #334155;  /* Subtle Grid Borders */
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-white);
-            line-height: 1.6;
-            padding-bottom: 6rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding-bottom: 5rem;
         }
 
-        /* Navigation Bar matched to image_c24807.png */
+        /* Navigation Bar */
         nav {
-            background-color: var(--bg-nav);
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 4rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #252525;
         }
 
-        .nav-profile {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .profile-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-green);
-            background-color: #333;
-        }
-
-        .profile-name {
-            font-size: 1.3rem;
+        .nav-logo {
             font-weight: 700;
-            letter-spacing: -0.03em;
-            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
         }
 
         .nav-links {
             display: flex;
-            align-items: center;
             gap: 2rem;
-            list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-white);
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            font-family: 'Courier New', Courier, monospace;
-            transition: color 0.2s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
-            color: var(--accent-green);
+            color: var(--accent);
         }
 
-        .nav-links .active {
-            color: var(--accent-green);
-            position: relative;
+        /* Hero / Introduction Header */
+        header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem 2rem;
         }
 
-        /* Main Section Header */
-        .main-title-container {
-            text-align: center;
-            margin: 4rem auto 3rem auto;
-        }
-
-        .main-title {
-            font-size: 3rem;
-            font-weight: 700;
-            font-family: 'Courier New', Courier, monospace;
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
 
-        .title-underline {
-            width: 45px;
-            height: 5px;
-            background-color: var(--accent-green);
-            margin: 0 auto;
-            border-radius: 10px;
+        header .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
         }
 
-        /* Widened Projects Container */
-        .projects-container {
-            max-width: 1350px; /* Increased width for a wider panel layout */
+        header .bio {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 700px;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 3.5rem;
         }
 
-        /* Alternating Project Cards Layout */
+        section {
+            padding-top: 4rem; /* Offset for sticky nav */
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Premium Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 6rem;
+        }
+
         .project-card {
             background-color: var(--bg-card);
-            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             overflow: hidden;
-            display: flex;
-            border: 1px solid #222;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            width: 100%;
-        }
-
-        /* Alternate image-text alignment dynamically */
-        .project-card:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        /* Adjusted width ratios for the wider panel display */
-        .project-text-side {
-            width: 38%;
-            padding: 3rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .project-image-side {
-            width: 62%;
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.1);
+        }
+
+        .image-container {
             position: relative;
-            background-color: #0b0b0b;
+            width: 100%;
+            height: 230px;
             overflow: hidden;
+            background-color: #111827;
         }
 
-        .project-image-side img {
+        .project-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
             opacity: 0.85;
-            transition: transform 0.4s ease, opacity 0.4s ease;
         }
 
-        .project-card:hover .project-image-side img {
-            transform: scale(1.02);
+        .project-card:hover .project-image {
+            transform: scale(1.05);
             opacity: 1;
         }
 
-        .project-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'Courier New', Courier, monospace;
+        .project-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .company-tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
         }
 
-        .project-description {
+        .project-content p {
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
-            line-height: 1.6;
+            flex-grow: 1;
         }
 
-        /* Skill Tags */
-        .project-tags {
+        /* Tech Tags inside Cards */
+        .card-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 2rem;
         }
 
         .tag {
-            background-color: var(--bg-tag);
-            color: #e0e0e0;
-            padding: 0.35rem 0.85rem;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
             border-radius: 6px;
             font-size: 0.8rem;
-            font-weight: 600;
-            font-family: 'Courier New', Courier, monospace;
-            border: 1px solid #333;
+            font-weight: 500;
         }
 
-        /* Neon Accent Call To Action Button */
-        .btn-check-it {
-            background-color: var(--accent-green);
-            color: #000000;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            display: inline-flex;
+        /* Skills Summary Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .skill-category {
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            width: max-content;
-            font-family: 'Courier New', Courier, monospace;
-            transition: background-color 0.2s ease, transform 0.1s ease;
         }
 
-        .btn-check-it:hover {
-            background-color: #4ade80;
-            transform: translateY(-1px);
+        .skill-list li::before {
+            content: "→";
+            color: var(--accent);
+            margin-right: 0.5rem;
+            font-weight: bold;
         }
 
-        /* Mobile Optimization */
-        @media (max-width: 900px) {
-            nav { padding: 0.75rem 1.5rem; }
-            .project-card, .project-card:nth-child(even) {
-                flex-direction: column;
-            }
-            .project-text-side, .project-image-side {
-                width: 100%;
-                padding: 2rem;
-            }
-            .project-image-side {
-                height: 250px;
-            }
+        /* Elegant Footer Contact */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 4rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 2rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .contact-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background-color: rgba(56, 189, 248, 0.02);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .project-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Hide links on very small screens for simplicity */
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation Bar mapped directly to image_c24807.png -->
+    <!-- Sticky Navigation Bar -->
     <nav>
-        <div class="nav-profile">
-            <img src="profile.jpg" alt="Julian Nosiara" class="profile-img">
-            <span class="profile-name">Julian Nosiara</span>[cite: 1]
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Julian <span>Nosiara</span></a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Capabilities</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects" class="active">Projects</a></li>
-            <li><a href="mailto:Julian.Nosiara@outlook.com">Contact</a></li>[cite: 1]
-        </ul>
     </nav>
 
-    <!-- Header Section Title -->
-    <div class="main-title-container" id="projects">
-        <h1 class="main-title">Projects</h1>
-        <div class="title-underline"></div>
-    </div>
+    <header id="about">
+        <div class="subtitle">Portfolio</div>
+        <h1>Julian Nosiara</h1>
+        <p class="bio">Bachelor of Mechanical Engineering (Honours) specializing in autonomous technology, experimental propulsion engineering, and structural analysis.</p>
+    </header>
 
-    <!-- Main List of Horizontal Project Blocks -->
-    <div class="projects-container">
-
-        <!-- Project Block 1: Monash Powertrain -->
-        <div class="project-card">
-            <div class="project-text-side">
-                <h2 class="project-title">Powertrain Systems Architecture</h2>
-                <p class="project-description">Managed a technical section of 20 engineering students building custom powertrains—handling complete systems configuration from custom battery packs to propeller blade manufacturing—for an experimental 10 kg quad-X search and rescue drone testbed platform.</p>[cite: 1]
-                <div class="project-tags">
-                    <span class="tag">Leadership</span>[cite: 1]
-                    <span class="tag">Powertrain Design</span>[cite: 1]
-                    <span class="tag">Systems Integration</span>
+    <div class="container">
+        
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Featured Engineering Work</h2>
+            
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="image-container">
+                        <!-- Replaced with a relevant Unsplash tech/drone placeholder -->
+                        <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop" alt="Monash UAS Propulsion Drone Systems" class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <div class="company-tag">Monash Uncrewed Aerial Systems</div>
+                        <h3>Autonomous SAR Drone Propulsion</h3>
+                        <p>Led a 20-student engineering powertrain team designing completely custom propulsion systems for Search and Rescue drones. Managed design arrays from battery configurations to propeller aerodynamics, tuned PID controllers, and analyzed flight dynamics on heavy-lift 10–15 kg VTOL and CTOL systems.</p>
+                        <div class="card-tags">
+                            <span class="tag">PID Tuning</span>
+                            <span class="tag">XFOIL</span>
+                            <span class="tag">Aerodynamics</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                    </div>
                 </div>
-                <a href="#contact" class="btn-check-it">Check it ↗</a>
-            </div>
-            <div class="project-image-side">
-                <img src="powertrain.jpg" alt="Custom Powertrain Project Architecture">
-            </div>
-        </div>
 
-        <!-- Project Block 2: Qantas Crew Seat Bogie -->
-        <div class="project-card">
-            <div class="project-text-side">
-                <h2 class="project-title">Crew Seat Bogie Engineering</h2>
-                <p class="project-description">Executed reverse engineering operations for complex aircraft interior structural mechanics, designing and modeling replacement profiles to successfully reduce business supply lead times and material procurement overhead costs.</p>[cite: 1]
-                <div class="project-tags">
-                    <span class="tag">Solidworks</span>[cite: 1]
-                    <span class="tag">Reverse Engineering</span>[cite: 1]
-                    <span class="tag">Aerospace Support</span>[cite: 1]
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="image-container">
+                        <!-- Replaced with an aviation/engineering placeholder -->
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop" alt="Aviation Tooling Design" class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <div class="company-tag">Qantas Group</div>
+                        <h3>Aviation Tooling & Component Design</h3>
+                        <p>Delivered long-term technical operations support within Engine Component Maintenance Services. Engineered custom testing tools to completely eliminate manual handling risks for line technicians, reverse-engineered structural components to drop business lead times, and wrote regulatory approved modifications.</p>
+                        <div class="card-tags">
+                            <span class="tag">Solidworks</span>
+                            <span class="tag">Part 21/145</span>
+                            <span class="tag">Reverse Engineering</span>
+                        </div>
+                    </div>
                 </div>
-                <a href="#contact" class="btn-check-it">Check it ↗</a>
-            </div>
-            <div class="project-image-side">
-                <img src="seat-bogie.jpg" alt="Aircraft Mechanical Component Reverse Engineering">
-            </div>
-        </div>
 
-        <!-- Project Block 3: Autonomous Surface Vehicle (Systems & Navigation Focus) -->
-        <div class="project-card">
-            <div class="project-text-side">
-                <h2 class="project-title">Autonomous ASV - Navigation & Guidance</h2>
-                <p class="project-description">Collaborated within a multidisciplinary engineering team to design an autonomous ocean surface vehicle for marine research. Developed a composite rigid sail system actuated by automated gearing and monitored via closed-loop nodes running on a Cube flight controller mapping Mission Planner paths.</p>[cite: 1]
-                <div class="project-tags">
-                    <span class="tag">Cube Controller</span>[cite: 1]
-                    <span class="tag">Mission Planner</span>[cite: 1]
-                    <span class="tag">Closed-Loop Control</span>[cite: 1]
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="image-container">
+                        <!-- Replaced with a marine/water engineering placeholder -->
+                        <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=800&auto=format&fit=crop" alt="Autonomous Surface Marine Vehicle" class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <div class="company-tag">Honours Capstone Project</div>
+                        <h3>Autonomous Ocean Surface Vehicle</h3>
+                        <p>Collaborated across disciplines to construct a self-navigating marine research craft. Designed a composite rigid sail rigged to an automated gear array, utilizing closed-loop control systems via a Cube mission planner framework. Validated vessel balance using fluid mechanics simulation across the sail and hull architecture.</p>
+                        <div class="card-tags">
+                            <span class="tag">ANSYS Fluent</span>
+                            <span class="tag">Fluid Analysis</span>
+                            <span class="tag">Cube Controller</span>
+                        </div>
+                    </div>
                 </div>
-                <a href="#contact" class="btn-check-it">Check it ↗</a>
             </div>
-            <div class="project-image-side">
-                <img src="surface-vehicle.jpg" alt="Autonomous Marine Research Surface Craft Systems">
-            </div>
-        </div>
+        </section>
 
-        <!-- Project Block 4: Qantas Ergonomic Tooling -->
-        <div class="project-card">
-            <div class="project-text-side">
-                <h2 class="project-title">Ergonomic Safety Tooling</h2>
-                <p class="project-description">Conceptualized and engineered an approved operations diagnostic testing apparatus at the Melbourne Maintenance Base. Directly addressed and eliminated a critical manual handling safety hazard for aircraft maintenance engineers working on operational equipment components.</p>[cite: 1]
-                <div class="project-tags">
-                    <span class="tag">Creo Parametric</span>[cite: 1]
-                    <span class="tag">Tooling Design</span>[cite: 1]
-                    <span class="tag">Risk Mitigation</span>[cite: 1]
+        <!-- Technical Capabilities Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Capabilities</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>CAD & Modeling</h4>
+                    <ul class="skill-list">
+                        <li>Solidworks</li>
+                        <li>Fusion 360</li>
+                        <li>Creo Parametric</li>
+                        <li>Onshape</li>
+                    </ul>
                 </div>
-                <a href="#contact" class="btn-check-it">Check it ↗</a>
+                <div class="skill-category">
+                    <h4>Simulation & Analysis</h4>
+                    <ul class="skill-list">
+                        <li>ANSYS Fluent (CFD)</li>
+                        <li>ANSYS Mechanical</li>
+                        <li>Abaqus (FEA)</li>
+                        <li>XFOIL Aero Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Computation & Control</h4>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>Matlab</li>
+                        <li>PID Tuning</li>
+                        <li>Mission Planner</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Manufacturing</h4>
+                    <ul class="skill-list">
+                        <li>Manual Machining (Lathe/Mill)</li>
+                        <li>CNC Operation</li>
+                        <li>3D Printing / Prototyping</li>
+                    </ul>
+                </div>
             </div>
-            <div class="project-image-side">
-                <img src="safety-tool.jpg" alt="Industrial Safety Testing Tool Design">
-            </div>
-        </div>
+        </section>
 
-        <!-- Project Block 5: Monash PID Tuning -->
-        <div class="project-card">
-            <div class="project-text-side">
-                <h2 class="project-title">PID Flight Control Tuning</h2>
-                <p class="project-description">Operated as a Flight Operations Engineer optimizing stability and control profiles for a heavy-lift 13 kg autonomous VTOL Y-6 search and rescue drone. Analyzed dynamic real-time flight performance telemetry to tune closed-loop controller responses.</p>[cite: 1]
-                <div class="project-tags">
-                    <span class="tag">PID Loops</span>[cite: 1]
-                    <span class="tag">Flight Operations</span>[cite: 1]
-                    <span class="tag">Data Analysis</span>[cite: 1]
-                </div>
-                <a href="#contact" class="btn-check-it">Check it ↗</a>
+        <!-- Premium Footer -->
+        <footer id="contact">
+            <h2>Let's Connect</h2>
+            <p style="color: var(--text-muted);">Open to professional technical inquiries and autonomous systems engineering roles.</p>
+            <div class="contact-links">
+                <a href="mailto:Julian.Nosiara@outlook.com" class="contact-btn">Julian.Nosiara@outlook.com</a>
+                <a href="tel:+61424809113" class="contact-btn">+61 424 809 113</a>
+                <!-- Make sure to replace the "#" below with your actual LinkedIn URL if it differs -->
+                <a href="https://linkedin.com/in/julian-nosiara-91a468285" target="_blank" class="contact-btn">LinkedIn Profile</a>
             </div>
-            <div class="project-image-side">
-                <img src="pid-tuning.jpg" alt="Autonomous Uncrewed Aerial System Flight Optimization">
-            </div>
-        </div>
-
-        <!-- Project Block 6: Autonomous ASV (Manufacturing & Testing Focus - Replaces Sail CFD) -->
-        <div class="project-card">
-            <div class="project-text-side">
-                <h2 class="project-title">Autonomous ASV - Vehicle Integration</h2>
-                <p class="project-description">Worked in a multidisciplinary team of four to manage the complete mechanical layout, structural component assembly, and physical manufacturing of an Autonomous Surface Vehicle (ASV), optimizing the design for deployment in field validation and marine environment testing.</p>[cite: 1]
-                <div class="project-tags">
-                    <span class="tag">Vehicle Design</span>[cite: 1]
-                    <span class="tag">Manufacturing</span>[cite: 1]
-                    <span class="tag">Marine Research Platform</span>[cite: 1]
-                </div>
-                <a href="#contact" class="btn-check-it">Check it ↗</a>
-            </div>
-            <div class="project-image-side">
-                <img src="asv-build.jpg" alt="Autonomous Surface Vehicle Manufacturing and Deployment Testing">
-            </div>
-        </div>
+        </footer>
 
     </div>
 
